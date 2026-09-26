@@ -26,15 +26,15 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{  NULL,     NULL, "OnTheSpot",       0,            1,           -1 },
-	{ "Xarchiver", NULL,      NULL,       0,            1,           -1 },
-	{ "qimgv",    NULL,       NULL,       0,            1,           -1 },
-	{ "vlc",      NULL,       NULL,       0,            1,           -1 },
-	{ "steam",    NULL,       NULL,       1 << 1,       0,           -1 },
-	{ "Spotify",   NULL,      NULL,       1 << 6,       0,           -1 },
-	{ "librewolf", NULL,      NULL,       1 << 2,       0,           -1 },
-	{ "librewolf", NULL, "Library",       0,            1,           -1 },
+	/* class      instance    title       tags mask     isfloating  isfullscreen monitor */
+	{  NULL,     NULL, "OnTheSpot",       0,            1,          0,           -1 },
+	{ "Xarchiver", NULL,      NULL,       0,            1,          0,           -1 },
+	{ "qimgv",    NULL,       NULL,       0,            1,          0,           -1 },
+	{ "vlc",      NULL,       NULL,       0,            1,          0,           -1 },
+	{ "steam",    NULL,       NULL,       1 << 1,       0,          0,           -1 },
+	{ "Spotify",   NULL,      NULL,       1 << 6,       0,          0,           -1 },
+	{ "librewolf", NULL,      NULL,       1 << 2,       0,          0,           -1 },
+	{ "librewolf", NULL, "Library",       0,            1,          0,           -1 },
 };
 
 /* layout(s) */
@@ -88,6 +88,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_n,      setlayout,      {0} },
 	{ MODKEY,                       XK_space,  togglefloating, {0} },
+	{ Mod1Mask|ShiftMask,             XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
