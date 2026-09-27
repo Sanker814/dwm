@@ -33,7 +33,7 @@ static const char *colors[][3]      = {
 	[SchemeStatus]    = { sankerff,  sanker22,  "#000000" }, // Statusbar right {text,background,not used but cannot be empty}
 	[SchemeTagsSel]   = { sankerFP,  sanker78,  "#000000" }, // Tagbar left selected {text,background,not used but cannot be empty} FP
 	[SchemeTagsNorm]  = { sanker0d,  sanker22,  "#000000" }, // Tagbar left unselected {text,background,not used but cannot be empty} 0d
-	[SchemeInfoSel]   = { sankerff,  sanker22,  "#000000" }, // infobar middle  selected {text,background,not used but cannot be empty}
+	[SchemeInfoSel]   = { sankerff,  sanker78,  "#000000" }, // infobar middle  selected {text,background,not used but cannot be empty}
 	[SchemeInfoNorm]  = { sankerff,  sanker22,  "#000000" }, // infobar middle  unselected {text,background,not used but cannot be empty}
 };
 
@@ -90,6 +90,7 @@ static const Layout layouts[] = {
 /* static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-l", "10", NULL }; */
 static const char *dmenucmd[] = { "/usr/local/bin/dmenu_run", "-l", "10", NULL };
 static const char *termcmd[] = { "/usr/local/bin/st", NULL };
+static const char *stbtopcmd[] = { "/usr/local/bin/st", "btop", NULL };
 static const char *pcmanfm[] = { "/usr/bin/pcmanfm", NULL };
 static const char *clipmenu[] = { "/usr/bin/clipmenu", "-i", NULL };
 static const char *librewolf[] = { "/usr/bin/librewolf", NULL };
@@ -161,7 +162,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
 	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
+	TAGKEYS(                        XK_t,                      5)
 	TAGKEYS(                        XK_r,                      6)
 	TAGKEYS(                        XK_f,                      7)
 	TAGKEYS(                        XK_g,                      8)
@@ -174,15 +175,17 @@ static const Key keys[] = {
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static const Button buttons[] = {
 	/* click                event mask      button          function        argument */
-	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
+/*	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
-	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+	{ ClkWinTitle,          0,              Button2,        zoom,           {0} }, */
+	{ ClkStatusText,        0,              Button1,        spawn,          {.v = AudioPrev } },
+	{ ClkStatusText,        0,              Button2,        spawn,          {.v = stbtopcmd } },
+	{ ClkStatusText,        0,              Button3,        spawn,          {.v = AudioNext } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
-	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
-	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+/*	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
+	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} }, */
 };
