@@ -10,7 +10,7 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Terminess Nerd Font:size=13.5" };
+static const char *fonts[]          = { "Terminess Nerd Font:size=12.2" };
 /* static const char dmenufont[]       = "Terminess Nerd Font:size=10.5"; */
 
 static const char col_gray1[]       = "#222222";
@@ -38,7 +38,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "1", "", "", "4", "5", "6", "", "8", "9" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -93,8 +93,8 @@ static const char *termcmd[] = { "/usr/local/bin/st", NULL };
 static const char *pcmanfm[] = { "/usr/bin/pcmanfm", NULL };
 static const char *clipmenu[] = { "/usr/bin/clipmenu", "-i", NULL };
 static const char *librewolf[] = { "/usr/bin/librewolf", NULL };
-static const char *maim1[] = { "/usr/bin/maim", "/home/sanker/Pictures/x11scr/$(date +%Y-%m-%d__%H-%M-%S).png", NULL };
-static const char *maim2[] = { "/usr/bin/maim", "-so", "|", "/usr/bin/xclip", "-se", "c", "-t", "image/png", NULL };
+static const char *maim1[] = { "/bin/sh", "-c", "/usr/bin/maim /home/sanker/Pictures/x11scr/$(date +%Y-%m-%d__%H-%M-%S).png", NULL };
+static const char *maim2[] = { "/bin/sh", "-c", "/usr/bin/maim -so | /usr/bin/xclip -se c -t image/png", NULL };
 static const char *flameshot[] = { "/usr/bin/flameshot", "gui", NULL };
 
 /* XF86 SNK814 */
@@ -140,16 +140,16 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} }, /*estasinXephyr*/
+	{ Mod1Mask,                     XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
 /*	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} }, */
+	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_n,      setlayout,      {0} }, */
 	{ MODKEY|ControlMask,           XK_comma,  cyclelayout,    {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
-/*	{ MODKEY,                       XK_n,      setlayout,      {0} }, */
 	{ MODKEY,                       XK_space,  togglefloating, {0} },
-	{ Mod1Mask|ShiftMask,           XK_f,      togglefullscr,  {0} }, /*estasinXephyr*/
+	{ Mod1Mask|ShiftMask,           XK_f,      togglefullscr,  {0} },
 /*	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
@@ -167,7 +167,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_g,                      8)
 	{ MODKEY|ShiftMask,             XK_l,      quit,           {0} },
 	{ MODKEY|ShiftMask,             XK_p,      quit,           {1} },
-	{ MODKEY,                       XK_s,      togglesticky,   {0} }, /*Xephyraaa*/
+	{ MODKEY,                       XK_s,      togglesticky,   {0} },
 };
 
 /* button definitions */
