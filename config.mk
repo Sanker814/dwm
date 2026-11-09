@@ -1,5 +1,5 @@
 # dwm version
-VERSION = 6.8
+VERSION = 6.8-sanker814-----$(shell date +%Y.%m.%d@%H:%M:%S)
 
 # Customize below to fit your system
 
